@@ -1,0 +1,60 @@
+<div class="ui form">
+
+  <div class="field">
+    <label>Nom</label>
+    {{input value=model.copy.name placeholder="Nom"}}
+  </div>
+
+  <br>
+
+  <div class="field">
+    <label>Description</label>
+    {{textarea value=model.copy.description placeholder="Grouper, fusionner, archiver, et comparer les comptes-rendus"}}
+  </div>
+
+  <div class="two fields">
+
+    <div class="field">
+      <label>Date de Début</label>
+      {{input type="date" value=model.copy.startDate placeholder="DateDébut"}}
+    </div>
+
+    <div class="field">
+      <label>Date de Fin</label>
+      {{input type="date" min=model.copy.startDate value=model.copy.dueDate placeholder="DateFin"}}
+    </div>
+
+  </div>
+
+  <div class="field">
+
+    <label>Propriétaire</label>
+    {{#ui-dropdown class="selection" selected=model.copy.owner onChange=(action (mut model.copy.owner)) as |execute mapper|}}
+
+      <div class="default text">
+        {{if model.owner model.owner.identity "Propriétaire"}}
+      </div>
+
+      <i class="dropdown icon"></i>
+
+      <div class="menu">
+        {{#each model.devs as |owner|}}
+          <div data-value="{{map-value mapper owner}}" class="item">
+            {{owner.identity}}
+          </div>
+        {{/each}}
+      </div>
+    {{/ui-dropdown}}
+  </div>
+
+  <div class="ui message">
+    <button class="ui button green" {{action "save" model}}>
+      <i class="icon check circle"></i> Valider
+    </button>
+    {{#link-to "projects" class="ui button"}}
+      <i class="icon cancel circle"></i> Annuler
+    {{/link-to}}
+  </div>
+</div>
+
+{{outlet}}

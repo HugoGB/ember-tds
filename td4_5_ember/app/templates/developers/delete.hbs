@@ -1,0 +1,21 @@
+<div class="ui message">
+
+  <i class="close icon" {{action "cancelDeletion"}}></i>
+  <i class="ui big icon question circle"></i>
+  Voulez-vous retirer le développeur `<strong>{{model.identity}}</strong>` ?
+
+  {{#if model.projects.length}}
+    <br/><strong>{{model.identity}}</strong> a {{model.projects.length}} projets.
+  {{/if}}
+
+  <button class="ui button red" {{action "delete" model}}>
+    <i class="icon check circle"></i> Confirmer
+  </button>
+
+  <button class="ui button grey" {{action "cancelDeletion"}}>
+    <i class="icon remove circle"></i> Annuler
+  </button>
+
+</div>
+
+{{outlet}}

@@ -1,0 +1,19 @@
+<div class="ui form">
+
+  <div class="ui input">
+
+    {{input value=model.copy.identity placeholder="Identité"}}
+
+  </div>
+
+  <button class="ui button green" {{action "save" model}}>
+    <i class="icon check circle"></i> Valider
+  </button>
+
+  <button class="ui button grey" {{action "cancel"}}>
+    <i class="icon cancel circle"></i> Annuler
+  </button>
+
+</div>
+
+{{outlet}}

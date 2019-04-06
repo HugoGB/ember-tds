@@ -1,0 +1,44 @@
+<div id="title" class="ui message">
+
+  <i class="ui big icon table "></i>
+
+  <div>
+    <h2>Développeurs</h2>
+    <h3>Administration de données</h3>
+  </div>
+
+</div>
+
+{{#link-to "developers.new" class="ui button orange"}}
+  <i class="ui plus icon"></i>
+  Ajouter un développeur...
+{{/link-to}}{{outlet}}
+
+<table class="ui selectable vertical inverted table">
+  <thead>
+    <tr>
+      <th class="nine wide">Identité</th>
+      <th class="one wide">Options</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  {{#each model as |dev|}}
+    <tr>
+      <td>
+        {{dev.identity}}
+      </td>
+      <td>
+        {{#link-to "developers.edit" dev class="ui icon circular green button"}}
+          <i class="ui icon edit"></i>
+        {{/link-to}}
+
+        {{#link-to "developers.delete" dev class="ui icon circular red button"}}
+          <i class="ui icon delete"></i>
+        {{/link-to}}
+      </td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
+
